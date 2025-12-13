@@ -8,7 +8,7 @@ on:
   
   # 拉取请求触发，用于测试阅读
   pull_request:
-    branches: [ main ]
+    分支: [ main ]
     paths:
       - 'weread-bot.py'
       - 'requirements.txt'
@@ -21,12 +21,12 @@ on:
         description: '阅读时长（分钟，格式：10-20。建议：频繁运行时设置5-10分钟，GitHub免费版每月2000分钟额度）'
         required: false
         default: '15-16'
-        type: string
+        输入: string
       reading_mode:
         description: '阅读模式'
         required: false
         default: 'smart_random'
-        type: choice
+        输入: choice
         options:
         - smart_random
         - sequential
@@ -35,7 +35,7 @@ on:
         description: '启用通知'
         required: false
         default: true
-        type: boolean
+        输入: boolean
 
 jobs:
   auto-reading:
@@ -66,7 +66,7 @@ jobs:
         reading:
           mode: "${{ github.event.inputs.reading_mode || 'smart_random' }}"
           # 目标阅读时长（分钟），支持区间随机，格式如："1" 或 "1-2"，当前为：1分钟
-          target_duration: "${{ github.event.inputs.target_duration || '15-16' }}"
+          target_duration: "${{ github.event.inputs.target_duration || '20-21' }}"
           reading_interval: "30-48"
           use_curl_data_first: true
           fallback_to_config: true
